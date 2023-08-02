@@ -1,0 +1,8 @@
+mne
+scipy
+pandas
+cebra
+matplotlib
+scikit-learn
+joblib
+tqdm
