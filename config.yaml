@@ -1,6 +1,6 @@
 preprocess_dir: 'data/SEED/SEED_EEG/Preprocessed_EEG'
 save_path: 'data/preprocessed_data'
-split_data_path: 'data/preprocessed_data/split_data.npz'
+split_data_path: 'data/preprocessed_data/time.npy'
 
 channels: 62
 persons: 15
@@ -26,4 +26,4 @@ models:
 embedding_dimensions: [2]
 #embeddings: ['none', 'emo', 'subject']
 embeddings: ['emo']
-knn_decoder_labels: ['emo', 'subject']
+decoder_labels: ['subject','emo']

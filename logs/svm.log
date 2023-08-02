@@ -1,2 +1,0 @@
-02-Aug-23 01:01:27 - Model: de_offset1-model_d2_i4_labelemo.model, Decoder_label: emo, Train Accuracy: 0.4345529988683516, Test Accuracy: 0.544134288947567
-02-Aug-23 01:01:33 - Model: de_offset1-model_d2_i4_labelemo.model, Decoder_label: subject, Train Accuracy: 0.05, Test Accuracy: 0.2

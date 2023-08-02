@@ -3,8 +3,7 @@ import yaml
 import logging
 import extract_time
 import train_models
-import svm_classification
-import knn_classification
+import classification
 
 def main():
     if len(sys.argv) < 3:
@@ -26,11 +25,11 @@ def main():
     elif command == 'svm_decode':
         logging.basicConfig(filename='logs/svm.log', filemode='w', level=logging.INFO,
                 format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-        svm_classification.main(config)
+        classification.main(config, decoder_type='svm')
     elif command == 'knn_decode':
         logging.basicConfig(filename='logs/knn.log', filemode='w', level=logging.INFO,
                 format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
-        knn_classification.main(config)
+        classification.main(config, decoder_type='knn')
     else:
         print("Unknown command:", command)
 
