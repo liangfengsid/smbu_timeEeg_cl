@@ -1,7 +1,7 @@
 import sys
 import yaml
 import logging
-import extract_de
+import extract_time
 import train_models
 import svm_classification
 import knn_classification
@@ -18,7 +18,7 @@ def main():
         config = yaml.safe_load(file)
 
     if command == 'preprocess':
-        extract_de.main(config)
+        extract_time.main(config)
     elif command == 'train':
         logging.basicConfig(filename='logs/training.log', filemode='w', level=logging.INFO,
                 format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')

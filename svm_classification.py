@@ -6,7 +6,7 @@ import logging
 import cebra
 import numpy as np
 import matplotlib.pyplot as plt
-import extract_de
+import extract_time
 
 def perform_decoding_and_plot(models, de_train, de_test, emo_label_train, emo_label_test, 
                                 max_iter, embedding_dimensions):
@@ -60,7 +60,7 @@ def main(config):
     embedding_dimensions = config['embedding_dimensions']
 
     de_train, de_test, emo_label_train, emo_label_test, _, _ = \
-        extract_de.load_split_data(split_path=split_data_path)
+        extract_time.load_split_data(split_path=split_data_path)
     perform_decoding_and_plot(models, de_train, de_test, emo_label_train, emo_label_test, 
                                 max_iter, embedding_dimensions)
 

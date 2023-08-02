@@ -6,7 +6,7 @@ import logging
 import cebra
 import numpy as np
 import matplotlib.pyplot as plt
-import extract_de
+import extract_time
 
 def perform_decoding_and_plot(models, de_train, de_test, emo_label_train, emo_label_test, subject_label_train, subject_label_test,
                                 max_iter, embeddings, decoder_labels, embedding_dimensions):
@@ -81,7 +81,7 @@ def main(config):
     decoder_labels = config['knn_decoder_labels']
 
     de_train, de_test, emo_label_train, emo_label_test, subject_label_train, subject_label_test = \
-        extract_de.load_split_data(split_path=split_data_path)
+        extract_time.load_split_data(split_path=split_data_path)
     perform_decoding_and_plot(models, de_train, de_test, emo_label_train, emo_label_test, subject_label_train, subject_label_test,
                                 max_iter, embeddings, decoder_labels, embedding_dimensions)
 

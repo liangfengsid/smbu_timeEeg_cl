@@ -7,7 +7,7 @@ from cebra import CEBRA
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-import extract_de
+import extract_time
 
 
 def train_cebra_models(models, de_train, emo_label_train, subject_label_train, 
@@ -65,7 +65,7 @@ def main(config):
     embedding_dimensions = config['embedding_dimensions']
 
     de_train, _, emo_label_train, _, subject_label_train, _ = \
-        extract_de.load_split_data(split_path=split_data_path)
+        extract_time.load_split_data(split_path=split_data_path)
     train_cebra_models(models, de_train, emo_label_train, subject_label_train,
                        numTime, batch_size, max_iter, embedding_dimensions)
 
