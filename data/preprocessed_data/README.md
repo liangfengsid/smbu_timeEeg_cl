@@ -8,17 +8,20 @@ The file `sample_split_data.npy` is a processed dataset that has been divided an
 
 ### Features
 
-The feature data in the dataset consists of several dimensions, defined as follows:
+The feature data represents the concatenated original EEG (Electroencephalogram) signals. The shape of this data is defined by two dimensions:
 
-- `time`: Number of records used for recording the signals.
-- `channels`: Number of channels used for recording the signals.
+- **Sampling Points**: The number of individual sampling points in the time series data.
+- **Channels**: The number of channels used for recording the EEG signals.
 
+This structure (sampling points, channels) illustrates how the raw brainwave data has been organized.
 
 ### Labels
 
-The label data in the dataset is also organized in dimensions:
+The label data corresponds to the individual sampling points, and its shape is defined as:
 
-- `time`: Number of records' label used for recording the signals.
+- **Sampling Points**: This single dimension reflects the label for each sampling point in the data.
+
+It means that every sampling point in the feature data has an associated label, defining the relationship or category it belongs to.
 
 ## Training and Testing Sets
 
