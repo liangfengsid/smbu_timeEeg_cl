@@ -20,7 +20,7 @@ def perform_decoding_and_plot(models, decoder_type, time_train, time_test, emo_l
         for d in embedding_dimensions:
             for embedding_type in embeddings:
 
-                model_fullname = f'de_{model_name}_d{d}_i{max_iter}_label{embedding_type}.model'
+                model_fullname = f'time_{model_name}_d{d}_i{max_iter}_label{embedding_type}.model'
                 cebra_model = cebra.CEBRA.load('models/'+model_fullname)
 
                 print(f'transforming data for {model_fullname}')

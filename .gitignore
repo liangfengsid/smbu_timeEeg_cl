@@ -1,3 +1,6 @@
 /data/SEED/
-__pyache__/
+__pycache__/
 /data/preprocessed_data/time.npy
+/figures/*.png
+/logs/*.log
+/models/*.model
