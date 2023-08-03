@@ -1,3 +1,0 @@
-03-Aug-23 19:48:29 - Training model offset1-model with d=2 and label=emo took 1.2988686561584473 seconds
-03-Aug-23 19:48:30 - Training model offset1-model with d=2 and label=subject took 0.8035614490509033 seconds
-03-Aug-23 19:48:30 - Training model offset1-model with d=2 and label=none took 0.01028299331665039 seconds
