@@ -2,7 +2,7 @@
 
 ## Overview
 
-The file `sample_split_data.npy` is a processed dataset that has been divided and ready for testing our program. It is processed using the script `extract_de.py`.
+The file `sample_split_data.npy` is a processed dataset that has been divided and ready for testing our program. It is processed using the script `extract_time.py`.
 
 ## Data Structure
 
