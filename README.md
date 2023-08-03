@@ -9,8 +9,8 @@ The following sections guide you through cloning the project, preparing the data
 
 Clone the repository using the following command:
 ```
-git clone https://github.com/liangfengsid/deConstrativeLearning.git
-cd deContrastiveLearning
+git clone https://github.com/liangfengsid/timeEegContrastive.git
+cd timeEegContrastive
 ```
 
 ## Dataset Preparation
