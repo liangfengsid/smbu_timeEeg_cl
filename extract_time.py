@@ -6,10 +6,10 @@ from sklearn.model_selection import train_test_split
 import yaml
 from tqdm import tqdm
 
-def process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, test_ratio, channels):
+def process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, test_ratio, channels, feature_size):
     
-    time_train = np.empty([0, channels])
-    time_test = np.empty([0, channels])
+    time_train = np.empty([0, channels * feature_size])
+    time_test = np.empty([0, channels * feature_size])
     emo_labels_train = np.empty([0, ], dtype=np.int32)
     emo_labels_test = np.empty([0, ], dtype=np.int32)
     subject_labels_train = np.empty([0, ], dtype=np.int32)
@@ -19,12 +19,23 @@ def process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, tes
     mod = (int)(1 / test_ratio)
     total_files = files.shape[0]
 
+    def extract_feature(a :np.ndarray):
+    features = []
+    i = 0
+    window_size = 100
+    while i < a.shape[0]:
+        window = a[i : i + window_size]
+        features.append([np.max(window),np.min(window), np.mean(window), np.median(window), np.std(window)])
+        i += window_size
+    return np.array(features)
+
     for f in tqdm(range(total_files), desc="Processing files"):
         eegs = scipy.io.loadmat(f'{preprocess_dir}/{files[f]}')
         # per sector
         for i in range(1, sectors + 1):
             k = f'{key_prefix[f]}_eeg{str(i)}'
-            epoch = eegs[k].swapaxes(0, 1)
+            epoch = np.apply_along_axis(extract_feature, 1, eegs[k]).swapaxes(0, 1)
+            epoch = epoch.reshape(epoch.shape[0], -1)
             label = np.full((epoch.shape[0], ), labels[i - 1], dtype=np.int32)
             subject_label = np.full((epoch.shape[0], ), f // sessions, dtype=np.int32)
             index = files.shape[0] * sectors + i
@@ -70,6 +81,7 @@ def load_split_data(split_path):
 def main(config):
     preprocess_dir = config['preprocess_dir']
     channels = config['channels']
+    feature_size = config['feature_size']
     persons = config['persons']
     sessions = config['sessions']
     sectors = config['sectors']
@@ -82,7 +94,7 @@ def main(config):
     files = np.asarray(files)[: sessions * persons]
 
     time_train, time_test, emo_labels_train, emo_labels_test, subject_labels_train, subject_labels_test = \
-        process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, test_ratio, channels)
+        process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, test_ratio, channels, feature_size)
 
     save_data(save_path+'/time.npy', time_train, time_test, emo_labels_train, emo_labels_test, 
                                 subject_labels_train, subject_labels_test)

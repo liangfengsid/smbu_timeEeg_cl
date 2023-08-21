@@ -33,10 +33,12 @@ def train_cebra_models(models, time_train, emo_label_train, subject_label_train,
                     cebra_model.fit(time_train, subject_label_train)
                 else:
                     cebra_model.fit(time_train)
+
                 end_time = time.time()
                 elapsed_time = end_time - start_time
                 logging.info(f'Training model {model_name} with d={d} and label={use_label} took {elapsed_time} seconds')
                 print(f'Training model {model_name} with d={d} and label={use_label} took {elapsed_time} seconds')
+                
                 cebra_model.save(f'models/time_{model_name}_d{d}_i{max_iter}_label{use_label}.model')
                 plt.figure()
                 cebra.plot_loss(cebra_model)
