@@ -4,3 +4,4 @@ __pycache__/
 /figures/*.png
 /logs/*.log
 /models/*.model
+/decoders/*.clf
