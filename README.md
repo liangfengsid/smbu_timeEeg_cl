@@ -41,6 +41,8 @@ Train the model to obtain latent embeddings with:
 python main.py train config.yaml
 ```
 
+If you are training after preprocessing, you need to change the value of **split_data_path** in the config.yaml file to the directory where your data is saved. Otherwise, our provided sample data will be used for training.
+
 ### SVM Decoding
 Decode using the SVM model on different embeddings and perform classification tasks with:
 ```
