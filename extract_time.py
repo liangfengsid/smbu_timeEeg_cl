@@ -20,14 +20,14 @@ def process_split_data(preprocess_dir, files, key_prefix, sessions, sectors, tes
     total_files = files.shape[0]
 
     def extract_feature(a :np.ndarray):
-    features = []
-    i = 0
-    window_size = 100
-    while i < a.shape[0]:
-        window = a[i : i + window_size]
-        features.append([np.max(window),np.min(window), np.mean(window), np.median(window), np.std(window)])
-        i += window_size
-    return np.array(features)
+        features = []
+        i = 0
+        window_size = 100
+        while i < a.shape[0]:
+            window = a[i : i + window_size]
+            features.append([np.max(window),np.min(window), np.mean(window), np.median(window), np.std(window)])
+            i += window_size
+        return np.array(features)
 
     for f in tqdm(range(total_files), desc="Processing files"):
         eegs = scipy.io.loadmat(f'{preprocess_dir}/{files[f]}')
